@@ -1,0 +1,12 @@
+Prog 2 Project
+
+- A 2021/2022 es évi Prog2 kötelező projectem egy "2048" játék.
+- A játék lényege hogy egy adott területen lévő számokkal ellátott négyzeteket tudunk mozgatni.
+  A négyzeteken lévő számok ha megegyeznek a két négyzet eggyé válik és a szám összeadódik.
+  Minden egyes mozgatás alkalmával (ha van hely a játétéren) egy új négyzet kerül a játéktérre(véletlenszerű helyre).
+  A játéknak akkor van vége ha már megtelt a játéktér és nincs több lépési lehetőség.
+- A játékot java script nyelvre fogom alapozni, webes alkalmazásként.
+- Az első koncepció az alap játék felépítése, extra funkció ami ezután bele kerülhet: különböző méretű pályák, változó színű négyzetek, elmenthető scoreboard(backend).
+
+Imre Péter
+R38VDQ
