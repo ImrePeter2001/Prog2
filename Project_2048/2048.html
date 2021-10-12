@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="2048.css">
+    <title>2048</title>
+</head>
+<body>
+
+
+    <div id="Frame">
+
+        <div id="Starting_S" class="screen">
+            <div id="Button_Center">
+                <button id=Start_b onclick="start()">New Game</button>
+            </div>>
+        </div>
+        
+        <div id="Game" class="screen">
+            <h1>2048</h1>
+            <div id="GameSpace">
+                <div class="elem"></div>
+                <div class="elem"></div>
+                <div class="elem"></div>
+                <div class="elem"></div>
+                <div class="elem"></div>
+                <div class="elem"></div>
+                <div class="elem"></div>
+                <div class="elem"></div>
+                <div class="elem"></div>
+                <div class="elem"></div>
+                <div class="elem"></div>
+                <div class="elem"></div>
+                <div class="elem"></div>
+                <div class="elem"></div>
+                <div class="elem"></div>
+                <div class="elem"></div>
+            </div>
+        </div>
+
+    </div>
+    <div id="Control">
+        <h2>Control</h2>
+        <button onclick="left()">left</button>
+        <button onclick="up()">up</button>
+        <button onclick="down()">down</button>
+        <button onclick="right()">right</button>
+    </div>
+
+    <script src="2048.js">
+    </script>
+</body>
+</html>
