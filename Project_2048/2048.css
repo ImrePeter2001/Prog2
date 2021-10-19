@@ -25,15 +25,52 @@ body{
         display: block;
     }
 
+    #Pause{
+        display:none;
+        position:absolute;
+        background: rgba(50,50,50,0.4);
+        z-index:1;
+        border-radius: 16px 16px 16px 16px;
+        text-align:center;
+    }
+        #Pause h1{
+            margin-top:150px;
+            color:rgb(255, 64, 64);
+            font-family: monospace;
+        }
+        #Pause button{
+            display:block;
+            background: linear-gradient(to right, rgba(241,231,103,1) 0%, rgba(254,182,69,1) 100%);
+            border-radius: 10px;
+            padding:10px;
+            color:black;
+            margin:20px auto;
+            font-size:30px;
+            font-family: monospace;
+        }
 
     #Game{
         padding:10px 10px; 
         position: relative;
         display:none;
     }
+
+        #Game #Info{
+            padding:8px 10px;
+            background:gray; 
+            margin:0 auto;
+            width:200px;
+            font-family: monospace;
+        }
+            #Game #Info #PauseButton {
+                float:right;
+            }
+
         #Game h1{
             margin-top: 15px;
             text-align: center;
+            font-family: monospace;
+            font-size: 50px;
         }
         #Game #GameSpace{
             position:absolute;
@@ -43,10 +80,27 @@ body{
             height:300px;
             background:gray;
         }
+        #Game #GameSpace .element{
+            width:74px;
+            height:74px;
+            background: transparent;
+            border: 1px solid #d6ced6;
+            display:inline-block;
+            margin-right:-5px;
+            margin-bottom:-5px;
+            overflow:hidden;
+            font-size:30px;
+            line-height:2.2;
+            text-align:center;
+            color:white;
+            font-family: monospace;
+        }
 
 
 #Control{
+    display: none;
     width:200px;margin: 20px auto;
+    font-family: monospace;
 }
     #Control h2{
         text-align: center;
