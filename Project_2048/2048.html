@@ -17,26 +17,42 @@
                 <button id=Start_b onclick="start()">New Game</button>
             </div>>
         </div>
-        
+
+        <div id="Pause" class="screen">
+
+            <h1>Paused</h1>
+
+            <button onclick="restart()">restart</button>
+            <button onclick="resume()">continue</button>
+        </div>
+
         <div id="Game" class="screen">
+
             <h1>2048</h1>
+
+            <div id="Info">
+                Score:
+                <span id="Score"></span>
+                <button id="PauseButton" onclick="pause()">Pause</button>
+            </div>
+
             <div id="GameSpace">
-                <div class="elem"></div>
-                <div class="elem"></div>
-                <div class="elem"></div>
-                <div class="elem"></div>
-                <div class="elem"></div>
-                <div class="elem"></div>
-                <div class="elem"></div>
-                <div class="elem"></div>
-                <div class="elem"></div>
-                <div class="elem"></div>
-                <div class="elem"></div>
-                <div class="elem"></div>
-                <div class="elem"></div>
-                <div class="elem"></div>
-                <div class="elem"></div>
-                <div class="elem"></div>
+                <div class="element"></div>
+                <div class="element"></div>
+                <div class="element"></div>
+                <div class="element"></div>
+                <div class="element"></div>
+                <div class="element"></div>
+                <div class="element"></div>
+                <div class="element"></div>
+                <div class="element"></div>
+                <div class="element"></div>
+                <div class="element"></div>
+                <div class="element"></div>
+                <div class="element"></div>
+                <div class="element"></div>
+                <div class="element"></div>
+                <div class="element"></div>
             </div>
         </div>
 
