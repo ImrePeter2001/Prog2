@@ -1,5 +1,13 @@
-function Set_Cookie(elements){
+if (localStorage.getItem("cookie")=='0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0'){window.onload = restart()}   //betöltés mentés nélül
+else if(document.cookie==""){window.onload = restart()}     //betöltés mentés nélkül
+else (window.onload = start_with_value())       //betöltés mentéssel
+
+let arr = document.getElementsByClassName("element");   
+
+function Set_Cookie(elements){      //document.cookie és localStorage beállítás az adott játékra
+    let Score = document.getElementById("Score");
     let string=[];
+
     for (let i=0; i<16;i++){
         if (elements[i].innerHTML!=""){
             string.push(elements[i].innerHTML);
@@ -9,9 +17,13 @@ function Set_Cookie(elements){
         }
     }
     document.cookie=string.join();
+
+    localStorage.clear();
+    localStorage.setItem("cookie",document.cookie);
+    localStorage.setItem("score",Score.innerHTML);
 }
 
-function start(){
+function start(){       //new game fázis
     let Starting_S = document.getElementById("Starting_S");
     let Game = document.getElementById("Game");
     let Control = document.getElementById("Control")
@@ -29,8 +41,31 @@ function start(){
     }
     Score.innerHTML=0;   
 }
+function start_with_value(){        //mentett állapot betöltése(ha van mentés)
+    let element = document.getElementsByClassName("element");
+    let Starting_S = document.getElementById("Starting_S");
+    let Game = document.getElementById("Game");
+    let Control = document.getElementById("Control")
+    let Score = document.getElementById("Score");
 
-function congrat(){
+    Starting_S.style.display="none";
+    Game.style.display="block";
+    Control.style.display="block";
+
+    splited=localStorage.getItem("cookie").split(",");
+    for(let i=0; i<16; i+=1){
+        if (splited[i]!="0"){
+            element[i].innerHTML=splited[i];
+        }
+        else if (splited=="0"){
+            element[i].innerHTML="";
+        }
+    }
+    Score.innerHTML=parseInt(localStorage.getItem("score"));
+    color();
+}
+
+function congrat(){         //Congratulation megjelenítése
     con = document.getElementById("Congrats");
 
     for(let i=0;i<16;i++){
@@ -40,10 +75,7 @@ function congrat(){
     }
 }
 
-window.onload = restart();
-let arr = document.getElementsByClassName("element");
-
-function right(){
+function right(){       //játék értékeinek jobbra mozgatása
     let can=false;
     let access = false;
     let k;
@@ -72,9 +104,9 @@ function right(){
         }
         
     }
-    if(can){av();}
+    if(can){insert_r();}
 }
-function left(){
+function left(){        //játék értékeinek balra mozgatása
     let can=false;
     let access = false;
     let k;
@@ -103,9 +135,9 @@ function left(){
         }
         
     }
-    if(can){av();}
+    if(can){insert_r();}
 }
-function down(){
+function down(){        //játék értékeinek lefelé mozgatása
     let can=false;
     let access = false;
     let k;
@@ -133,10 +165,10 @@ function down(){
             }
         }
     }
-    if(can){av();}
+    if(can){insert_r();}
 }
 
-function up(){
+function up(){          //játék értékeinek felfelé mozgatása
     let can=false;
     let access = false;
     let k;
@@ -164,9 +196,9 @@ function up(){
             }
         }
     }
-    if(can){av();}
+    if(can){insert_r();}
 }
-function random(){
+function random(){          //új szám megjelenése random helyen
     let done=false;
     while(done===false){
         let num = Math.floor(Math.random()*16);
@@ -176,7 +208,7 @@ function random(){
         }
     }
 }
-function av(){
+function insert_r(){          //lépés utáni szabad hely keresés
     let x = false;
     let count=0;
     for(let i=0; i<16;i++){
@@ -190,7 +222,7 @@ function av(){
     color();
     congrat();
 }
-function check(){
+function check(){       //szabad mozgás keresése
     let x = false;
     for(let i =0 ;i<16;i++){
         switch(i){
@@ -278,7 +310,7 @@ function check(){
     }
     if(!x){end();}
 }
-function color(){
+function color(){       //számok háttér színe
     let matches = document.querySelectorAll("div.element");
     
     for(let i=0;i<16;i++){
@@ -302,21 +334,21 @@ function color(){
         }
     }
 }
-function pause(){
+function pause(){       //játék megállítás megjelenítése
     let Pause = document.getElementById("Pause");
     let Control = document.getElementById("Control");
     
     Pause.style.display="block";
     Control.style.display="none";
 }
-function resume(){
+function resume(){      //játék folytatás (pause után)
     let Pause = document.getElementById("Pause");
     let Control = document.getElementById("Control");
 
     Pause.style.display="none";
     Control.style.display="block";
 }
-function restart(){
+function restart(){     //játék újra indítása a new game képernyőtől
     let Pause = document.getElementById("Pause");
     let Starting_S = document.getElementById("Starting_S");
     let element = document.getElementsByClassName("element");
@@ -336,14 +368,15 @@ function restart(){
     }
     Score.innerHTML=0;
 }
-function end(){
+
+function end(){         //játék vége (nincs több lépési lehetőség)
     let GameOver = document.getElementById("GameOver");
     let Control = document.getElementById("Control");
 
     GameOver.style.display="block";
     Control.style.display="none";
 }
-window.addEventListener("keydown", function(e)
+window.addEventListener("keydown", function(e)          //lépési gombok/billentyűk
 {
     if(e.code=="ArrowLeft"){left();}
     else if(e.code=="ArrowRight"){right();}
